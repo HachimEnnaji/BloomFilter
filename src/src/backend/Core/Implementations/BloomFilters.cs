@@ -1,4 +1,5 @@
 ﻿using BloomFilter.Core.Interfaces;
+using System.Collections;
 
 namespace BloomFilter.Core.Implementations;
 public class BloomFilters(IBitArray bitArray, IEnumerable<IHashFunction> hashFunctions) : IBloomFilter
@@ -20,5 +21,5 @@ public class BloomFilters(IBitArray bitArray, IEnumerable<IHashFunction> hashFun
         return _hashedFunctions.All(bit => _bitArray.Get(bit.ComputeHash(input, _bitArray.Length)));
     }
 
-    //public BitArray GetBitArray() => _bitArray.GetArray();
+    public BitArray GetBitArray() => _bitArray.GetArray();
 }
