@@ -16,5 +16,5 @@ public class SimpleBitArray(int capacity) : IBitArray
     {
         return _bitArray.Get(index);
     }
-    //public BitArray GetArray() => _bitArray;
+    public BitArray GetArray() => _bitArray;
 }

@@ -26,12 +26,12 @@ public class Program
 
         //WIP
 
-        //var f = bloomFilter.GetBitArray();
-        //int i = 0;
-        //foreach (var bit in f)
-        //{
-        //    Console.WriteLine($"{i} :\t{bit}");
-        //    i++;
-        //}
+        var f = bloomFilter.GetBitArray();
+        int i = 0;
+        foreach (var bit in f)
+        {
+            Console.WriteLine($"{i} :\t{bit}");
+            i++;
+        }
     }
 }
