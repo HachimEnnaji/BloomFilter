@@ -14,7 +14,7 @@ namespace BloomFilter.Api
         [HttpGet]
         [ProducesResponseType(typeof(MemberDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> Get([FromQuery] Guid id)
         {
             try
             {

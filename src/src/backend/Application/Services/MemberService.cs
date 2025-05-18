@@ -1,19 +1,24 @@
-﻿using BloomFilter.Application.Interfaces;
+﻿using BloomFilter.Application.CustomExceptions;
+using BloomFilter.Application.Interfaces;
 using BloomFilter.Core.Interfaces;
 
 namespace BloomFilter.Application.Services;
 
-public class MemberService(IMemberRepository memberRepository) : IMemberService
+public class MemberService : IMemberService
 {
+    private readonly IMemberRepository _repository;
+    public MemberService(IMemberRepository memberRepository)
+    {
+        _repository = memberRepository;
+    }
 
-    private readonly IMemberRepository _repository = memberRepository;
     public async Task<MemberDto> GetMemberAsync(Guid id)
     {
         var member = await _repository.GetMemberByIdAsync(id);
 
         if (member is null)
         {
-            throw new DirectoryNotFoundException($"Member with ID {id} not found");
+            throw new NotFoundException($"Member with ID {id} not found");
         }
 
         return new MemberDto

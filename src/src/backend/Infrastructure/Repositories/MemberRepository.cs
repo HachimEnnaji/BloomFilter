@@ -8,15 +8,16 @@ namespace BloomFilter.Infrastructure.Repositories;
 public class MemberRepository(ApplicationDbContext dbContext) : IMemberRepository
 {
     private readonly ApplicationDbContext _dbContext = dbContext;
+
     public async Task<Member> GetMemberByIdAsync(Guid id)
     {
-        var memberEntity = await _dbContext.MemberEntity.FirstOrDefaultAsync(x => x.Id == id);
+        var memberEntity = await _dbContext.Member.FirstOrDefaultAsync(x => x.IdMember == id);
 
         if (memberEntity == null)
         {
             return null;
         }
 
-        return Member.Create(memberEntity.Id, memberEntity.Name, memberEntity.Surname, memberEntity.Email);
+        return Member.Create(memberEntity.IdMember, memberEntity.Name, memberEntity.Surname, memberEntity.Email);
     }
 }
