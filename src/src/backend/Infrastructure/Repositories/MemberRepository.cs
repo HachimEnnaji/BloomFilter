@@ -9,6 +9,13 @@ public class MemberRepository(ApplicationDbContext dbContext) : IMemberRepositor
 {
     private readonly ApplicationDbContext _dbContext = dbContext;
 
+    public async Task<List<Member>> GetAllMembersAsync()
+    {
+        var members = await _dbContext.Member.ToListAsync();
+        return new List<Member>(members.Select(x => Member.Create(x.IdMember, x.Name, x.Surname, x.Email)));
+
+    }
+
     public async Task<Member> GetMemberByIdAsync(Guid id)
     {
         var memberEntity = await _dbContext.Member.FirstOrDefaultAsync(x => x.IdMember == id);

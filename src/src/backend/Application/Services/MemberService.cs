@@ -4,12 +4,24 @@ using BloomFilter.Core.Interfaces;
 
 namespace BloomFilter.Application.Services;
 
-public class MemberService : IMemberService
+public class MemberService(IMemberRepository memberRepository) : IMemberService
 {
-    private readonly IMemberRepository _repository;
-    public MemberService(IMemberRepository memberRepository)
+    private readonly IMemberRepository _repository = memberRepository;
+
+    public async Task<List<MemberDto>> GetAllMembersAsync()
     {
-        _repository = memberRepository;
+        var members = await _repository.GetAllMembersAsync();
+
+        return members.Select(x =>
+        new MemberDto
+        {
+            Email = x.Email,
+            Name = x.Name,
+            Id = x.Id,
+            LastName = x.Surname
+        })
+            .ToList();
+
     }
 
     public async Task<MemberDto> GetMemberAsync(Guid id)

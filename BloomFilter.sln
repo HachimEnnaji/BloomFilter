@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloomFilter.Core", "src\src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloomFilter.Infrastructure", "src\src\backend\Infrastructure\BloomFilter.Infrastructure.csproj", "{16397677-6F1F-4EFD-91FB-B38D05A14B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTry", "ConsoleTry\ConsoleTry.csproj", "{AB135CE9-1FD9-4360-A325-BD1966C5B767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTry", "ConsoleTry\ConsoleTry.csproj", "{AB135CE9-1FD9-4360-A325-BD1966C5B767}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{186A5765-639C-43FF-B7C2-F49BE9C402D4}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

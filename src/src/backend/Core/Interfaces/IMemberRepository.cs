@@ -5,4 +5,5 @@ namespace BloomFilter.Core.Interfaces;
 public interface IMemberRepository
 {
     Task<Member> GetMemberByIdAsync(Guid id);
+    Task<List<Member>> GetAllMembersAsync();
 }

@@ -12,11 +12,19 @@ namespace BloomFilter.Api.Endpoints
 
             //GET api/member/{id}
 
-            group.MapGet("/", MemberEndpoint.GetMemberByIdAsync)
+            group.MapGet("/{id:guid}", MemberEndpoint.GetMemberByIdAsync)
             .WithName("GetMember")
             .WithDescription("Get Member By ID")
             .Produces<MemberDto>(StatusCodes.Status200OK)
             .Produces<ProblemDetails>(StatusCodes.Status404NotFound);
+
+            group.MapGet("/", MemberEndpoint.GetAllMembersAsync)
+            .WithName("GetMembers")
+            .WithDescription("Get All Members ")
+            .Produces<MemberDto>(StatusCodes.Status200OK)
+            .Produces<ProblemDetails>(StatusCodes.Status404NotFound);
+
+
 
             return app;
 

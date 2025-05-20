@@ -8,6 +8,12 @@ public class MemberCacheService(IMemberService memberService, ICacheService<Memb
 {
     private readonly ICacheService<MemberDto> _cache = cache;
     private readonly IMemberService _memberService = memberService;
+
+    public async Task<List<MemberDto>> GetAllMembersAsync()
+    {
+        return await _memberService.GetAllMembersAsync();
+    }
+
     public async Task<MemberDto> GetMemberAsync(Guid id)
     {
         string key = id.ToString();
